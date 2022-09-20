@@ -1,0 +1,135 @@
+{
+  "integration": {
+    "start_date": "22-08-2022",
+    "date_format":"DD-MM-YYYY"
+  },
+
+"scope":
+  {
+   "item_master": { "org_code": "AGIMO" },
+   "vc_master" : 
+   {"bu":["ATC FMCG Kuwait","ACB Kuwait","ATC Kuwait","AGH Kuwait","AIGTC BU","ADCO Kuwait","ATC Beauty and Wellness Kuwait","CPVEN Kuwait"]},
+   "sales_order" : 
+   {"bu":["ATC FMCG Kuwait","ACB Kuwait","ATC Kuwait","AGH Kuwait","AIGTC BU","ADCO Kuwait","ATC Beauty and Wellness Kuwait","CPVEN Kuwait"]}
+  },
+
+  "wallet": {
+    "path": "file:/u01/wallet",
+    "password": "password123"
+  },
+  "instance_url": "https://ebns-test.fa.em2.oraclecloud.com",
+  "fusion_api_authentication": {
+    "username": "tamilselvan.e@focusrtech.com",
+    "password": "oracle123"
+  },
+  "fusion_so_report": {
+    "xdo_path": "/Custom/FUSION_SALES_ORDER_DATA_EXTRACT_REPORT.xdo",
+    "output_format": "xml",
+    "wsdl_url": "https://ebns-test.fa.em2.oraclecloud.com/xmlpserver/services/ExternalReportWSSService?WSDL",
+    "http_method": "POST",
+    "http_version": "HTTP/1.2",
+    "content_type": "application/soap+xml;charset=UTF-8",
+    "soap_action": "https://ebns-test.fa.em2.oraclecloud.com/xmlpserver/services/ExternalReportWSSService/runReport",
+    "connection": "Keep-Alive"
+  },
+    "fusion_vc_report": {
+    "xdo_path": "/Custom/XX_VENDOR_CUSTOMER_MASTER_REPORT.xdo"
+  },
+"fusion_item_report": {
+    "xdo_path": "/Custom/XX_ITEM_MASTER_DTLS_REPORT.xdo"
+  },
+  "create_pick_wave": {
+    "url": "https://ebns-test.fa.em2.oraclecloud.com/fscmRestApi/resources/11.13.18.05/pickWaves",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "release_rule": "ATC - Release Rule",
+  "release_pick_wave": {
+    "url": "https://ebns-test.fa.em2.oraclecloud.com/fscmRestApi/resources/11.13.18.05/pickWaves/",
+    "http_method": "PATCH",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "pick_slip_details": {
+    "http_method": "GET",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "confirm_pick_slip": {
+    "url": "https://ebns-test.fa.em2.oraclecloud.com/fscmRestApi/resources/11.13.18.05/pickTransactions",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "ship_confirm": {
+    "url": "https://ebns-test.fa.em2.oraclecloud.com/fscmRestApi/resources/11.13.18.05/shippingTransactions",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "create_shipment": {
+    "wsdl_url": "https://ebns-test.fa.em2.oraclecloud.com/fscmService/ShipmentLineService?WSDL",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "text/xml; charset=utf-8",
+    "soap_action": "https://ebns-test.fa.em2.oraclecloud.com/fscmService/ShipmentLineService/AutocreateShipments",
+    "connection": "Keep-Alive"
+  },
+  "update_shipment": {
+    "wsdl_url": "https://ebns-test.fa.em2.oraclecloud.com/fscmService/ShipmentLineService?WSDL",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "text/xml; charset=utf-8",
+    "soap_action": "https://ebns-test.fa.em2.oraclecloud.com/fscmService/ShipmentLineService/UpdateShipmentLinesAsync",
+    "connection": "Keep-Alive"
+  },
+  "rma_receipt": {
+    "url": "https://ebns-test.fa.em2.oraclecloud.com/fscmRestApi/resources/11.13.18.05/receivingReceiptRequests",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "send_receipt_confirmation": {
+    "wsdl_url": "https://ebns-test.fa.em2.oraclecloud.com/fscmService/ErpIntegrationService?WSDL",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "text/xml; charset=utf-8",
+    "soap_action": "https://ebns-test.fa.em2.oraclecloud.com/fscmService/ErpIntegrationService/submitESSJobRequest",
+    "connection": "Keep-Alive"
+  },
+  "expected_shipments": {
+    "wsdl_url": "https://ebns-test.fa.em2.oraclecloud.com/rcvReceiptAdvice/ReceiptAdviceService?WSDL",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "text/xml; charset=utf-8",
+    "soap_action": "https://ebns-test.fa.em2.oraclecloud.com/rcvReceiptAdvice/ReceiptAdviceService/getReceiptAdviceDetailsAsync",
+    "connection": "Keep-Alive"
+  },
+  "wms_user_token": {
+    "username": "ACTGRP",
+    "password": "12345",
+    "url": "http://192.168.20.87:3010/wms/api/users/login",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "wms_ship_order": {
+    "url": "http://192.168.20.87:3010/wms/api/orders/shiporder",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "wms_vc_master": {
+    "url": "http://192.168.20.87:3010/wms/api/masters/account",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  },
+  "wms_item_master": {
+    "url": "http://192.168.20.87:3010/wms/api/masters/barcode",
+    "http_method": "POST",
+    "http_version": "HTTP/1.1",
+    "content_type": "application/json"
+  }
+}
